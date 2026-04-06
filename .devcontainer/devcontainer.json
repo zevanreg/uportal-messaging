@@ -18,5 +18,5 @@
       ]
     }
   },
-  "postCreateCommand": "mvn dependency:resolve"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install && mvn dependency:resolve"
 }
