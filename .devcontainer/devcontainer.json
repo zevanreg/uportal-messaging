@@ -1,0 +1,22 @@
+{
+  "name": "uportal-messaging",
+  "image": "mcr.microsoft.com/devcontainers/java:8",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "8",
+      "installMaven": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.copilot-modernization",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-maven"
+      ]
+    }
+  },
+  "postCreateCommand": "mvn dependency:resolve"
+}
