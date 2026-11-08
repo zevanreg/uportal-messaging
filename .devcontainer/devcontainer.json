@@ -1,0 +1,28 @@
+{
+  "name": "uportal-messaging (Java 8)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "forwardPorts": [8080],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "vscjava.vscode-java-pack"
+      ],
+      "settings": {
+        "java.jdt.ls.java.home": "/opt/java/tooling",
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-1.8",
+            "path": "/usr/local/sdkman/candidates/java/current",
+            "default": true
+          }
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "git lfs install && mvn -B -ntp dependency:resolve"
+}
