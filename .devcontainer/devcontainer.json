@@ -1,23 +1,29 @@
 {
-  "name": "uportal-messaging",
-  "image": "mcr.microsoft.com/devcontainers/java:8",
-  "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "8",
-      "installMaven": true,
-      "additionalVersions": "21"
-    }
+  "name": "uportal-messaging (Java 8)",
+  "build": {
+    "dockerfile": "Dockerfile"
   },
+  "remoteUser": "vscode",
+  "forwardPorts": [8080],
   "customizations": {
     "vscode": {
       "extensions": [
         "GitHub.copilot",
         "GitHub.copilot-chat",
-        "vscjava.migrate-java-to-azure",
         "vscjava.vscode-java-pack",
-        "vscjava.vscode-maven"
-      ]
+        "vscjava.migrate-java-to-azure"
+      ],
+      "settings": {
+        "java.jdt.ls.java.home": "/opt/java/tooling",
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-1.8",
+            "path": "/usr/local/sdkman/candidates/java/current",
+            "default": true
+          }
+        ]
+      }
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install && mvn dependency:resolve"
+  "postCreateCommand": "git lfs install && mvn -B -ntp dependency:resolve"
 }
